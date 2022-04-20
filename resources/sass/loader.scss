@@ -1,0 +1,139 @@
+@import "variables";
+
+.pageLoader {
+    z-index: 999999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    @include themed() {
+        background: t('header');
+    }
+
+    .error {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 120px;
+        text-align: center;
+    }
+}
+
+.dice-loader {
+    $root: &;
+
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    &__dot {
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+            left 0.2s ease-in-out,
+            top 0.2s ease-in-out;
+    }
+
+    &--2 {
+        #{$root}__dot {
+            left: 33%;
+            top: 33%;
+            &:nth-child(1) {
+                left: 66%;
+                top: 66%;
+            }
+        }
+    }
+    &--3 {
+        #{$root}__dot {
+            left: 33%;
+            top: 33%;
+            &:nth-child(1) {
+                left: 66%;
+                top: 66%;
+            }
+            &:nth-child(2) {
+                left: 50%;
+                top: 50%;
+            }
+        }
+    }
+    &--4 {
+        #{$root}__dot {
+            left: 25%;
+            top: 25%;
+            &:nth-child(1) {
+                left: 75%;
+                top: 25%;
+            }
+            &:nth-child(2) {
+                left: 25%;
+                top: 75%;
+            }
+            &:nth-child(3) {
+                left: 75%;
+                top: 75%;
+            }
+        }
+    }
+    &--5 {
+        #{$root}__dot {
+            left: 25%;
+            top: 25%;
+            &:nth-child(1) {
+                left: 75%;
+                top: 25%;
+            }
+            &:nth-child(2) {
+                left: 25%;
+                top: 75%;
+            }
+            &:nth-child(3) {
+                left: 75%;
+                top: 75%;
+            }
+            &:nth-child(4) {
+                left: 50%;
+                top: 50%;
+            }
+        }
+    }
+    &--6 {
+        #{$root}__dot {
+            left: 25%;
+            top: 25%;
+            &:nth-child(1) {
+                left: 75%;
+                top: 25%;
+            }
+            &:nth-child(2) {
+                left: 25%;
+                top: 75%;
+            }
+            &:nth-child(3) {
+                left: 75%;
+                top: 75%;
+            }
+            &:nth-child(4) {
+                left: 25%;
+                top: 50%;
+            }
+            &:nth-child(5) {
+                left: 75%;
+                top: 50%;
+            }
+        }
+    }
+}

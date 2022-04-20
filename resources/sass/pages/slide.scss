@@ -1,0 +1,181 @@
+@import "../variables";
+
+.game-content-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .slide_container_line {
+        position: absolute;
+        z-index: 4;
+        background: url('/img/misc/slide.svg') no-repeat center;
+        background-size: cover;
+        width: 20px;
+        height: 185px;
+        margin-top: 155px;
+    }
+
+    .game-history {
+        z-index: 55;
+    }
+
+    .slide_container {
+        display: flex;
+        overflow: hidden;
+        width: calc(100% + 30px);
+
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            z-index: 3;
+        }
+
+        @include themed() {
+            &:before {
+                left: 0;
+                background: linear-gradient(to left, transparent, t('sidebar'));
+            }
+
+            &:after {
+                right: 0;
+                background: linear-gradient(to right, transparent, t('sidebar'));
+            }
+        }
+
+        .slide_container_row {
+            display: flex;
+            white-space: nowrap;
+            flex-wrap: nowrap;
+
+            @include themed() {
+                .slide_card {
+                    width: 110px;
+                    height: 230px;
+                    display: flex;
+                    margin-right: 10px;
+                    border-radius: 3px;
+                    user-select: none;
+                    position: relative;
+                    background: #1e1d23;
+                    border: 3px solid transparent;
+                    transition: border-color 0.3s ease;
+
+                    .slide_card_footer {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 20%;
+                        background: #18171c;
+                        transition: background 0.3s ease;
+                    }
+
+                    .hexagon {
+                        position: absolute;
+                        left: 50%;
+                        top: 14px;
+                        width: 70%;
+                        height: 85px;
+                        transform: translateX(-50%);
+                        background: url(/img/misc/hexagon.svg) no-repeat center;
+                        background-size: cover;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+
+                .slide_card.selected {
+                    border-color: darken(#18171c, 3%) !important;
+
+                    .slide_card_footer {
+                        background: darken(#18171c, 3%) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .slideCustomHistory {
+        position: absolute;
+        left: 30px;
+        top: 30px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 228px;
+        z-index: 5;
+        width: 45px;
+        border-radius: 5px;
+        overflow: hidden;
+
+        @include themed() {
+            background: darken(t('sidebar'), 10%);
+        }
+
+        .slideCustomHistoryElement {
+            padding: 0.955em 0;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: black;
+        }
+    }
+
+    .game-history {
+        height: 10px;
+        padding: 0 !important;
+        position: relative;
+        top: 0 !important;
+        bottom: unset !important;
+
+        .history-slide {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            will-change: width;
+
+            span {
+                position: absolute;
+                right: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: white;
+                font-size: 0.65em;
+            }
+
+            @include themed() {
+                background: t('secondary');
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .game-content-slide {
+        .slideCustomHistory {
+            left: 10px;
+            top: 10px;
+            transform: unset !important;
+            height: 180px;
+        }
+
+        .slide_container_line {
+            margin-top: 105px;
+        }
+    }
+}

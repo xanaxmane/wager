@@ -1,0 +1,199 @@
+@import '../variables';
+
+.bonusContainer {
+    @include themed() {
+        height: 100%;
+        background: t('sidebar');
+        border-radius: 3px;
+        border: 1px solid t('border');
+        box-shadow: t('shadow');
+
+        .bonusHeader {
+            font-size: 1.2em;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 25px;
+            background: darken(t('sidebar'), 1.5%);
+        }
+
+        .h {
+            min-height: 610px;
+        }
+
+        .bonusSidebar {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            $inactive: t('input');
+            $active: t('secondary');
+
+            .sidebarEntry {
+                position: relative;
+                margin-bottom: 35px;
+                display: flex;
+                cursor: pointer;
+                width: 100%;
+                padding-right: 62px;
+                margin-left: 62px;
+
+                &:before {
+                    content: '';
+                    background: $inactive;
+                    position: absolute;
+                    left: -15px;
+                    top: 0;
+                    width: 4px;
+                    height: 100%;
+                    transition: background 0.3s ease;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .icon {
+                    position: absolute;
+                    background: $inactive;
+                    width: 62px;
+                    height: 62px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    left: -90px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: background 0.3s ease;
+
+                    i, svg {
+                        font-size: 1.1em;
+                        color: rgba(t('text'), 0.5);
+                        transition: color 0.3s ease;
+                    }
+                }
+
+                .entry {
+                    .title {
+                        text-transform: uppercase;
+                        margin-bottom: 5px;
+                        color: darken(t('link'), 15%);
+                        transition: color 0.3s ease;
+                    }
+
+                    .desc {
+                        color: rgba(t('text'), 0.6);
+                        font-size: 0.9em;
+                    }
+                }
+            }
+
+            .sidebarEntry.active {
+                &:before {
+                    background: $active;
+                }
+
+                .icon {
+                    background: $active;
+
+                    i, svg {
+                        color: white;
+                    }
+                }
+
+                .entry {
+                    .title {
+                        color: $active;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bonusContent {
+    padding-left: 50px;
+    padding-right: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+[data-bonus-modal-contents] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    min-height: 400px;
+
+    @include themed() {
+        .wheelContainer {
+            position: relative;
+            user-select: none;
+
+            .wheelBlock {
+                position: absolute;
+                left: 50%;
+                bottom: -20px;
+                transform: translateX(-50%);
+                border-top: 4px solid t('secondary');
+                @include blur(t('sidebar'), 0.6, 0.9, 15px);
+                height: 90px;
+                width: 370px;
+                box-shadow: t('shadow');
+
+                .wheelDesc {
+                    text-align: center;
+                    width: 190px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    div:first-child {
+                        font-size: 1.3em;
+                    }
+
+                    div:last-child {
+                        color: rgba(t('text'), 0.5);
+                        font-size: 1.05em;
+                    }
+                }
+
+                button {
+                    position: absolute;
+                    right: 30px;
+                    width: 150px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .bonusSidebar {
+        margin-bottom: 125px;
+    }
+
+    .bonusContent {
+        padding-left: 25px;
+        padding-right: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebarEntry {
+        width: 45% !important;
+        padding-right: unset !important;
+        margin-left: unset !important;
+    }
+
+    .h {
+        min-height: unset !important;
+    }
+}

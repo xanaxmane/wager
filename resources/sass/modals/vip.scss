@@ -1,0 +1,142 @@
+@import "../variables";
+
+.vip_bonus {
+    .vipDesc {
+        @include themed() {
+            color: rgba(t('text'), 0.8);
+            font-size: 0.9em;
+        }
+    }
+
+    .bonus-image {
+        background-image: url('/img/misc/bonus.svg');
+        background-size: cover;
+        position: relative;
+        height: 120px;
+
+        .btn {
+            position: absolute;
+            width: 50%;
+            right: 10px;
+            bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+
+    .progress {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 40%;
+        height: 14px;
+        border-radius: 3px;
+
+        @include themed() {
+            background: darken(t('sidebar'), 3%);
+
+            .progress-bar {
+                height: 14px;
+                background: t('secondary');
+                font-size: 0.65em;
+            }
+        }
+    }
+}
+
+.vip {
+    .vip-logo {
+        width: 40%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .vipDesc {
+        @include themed() {
+            color: rgba(t('text'), 0.8);
+            font-size: 0.9em;
+        }
+    }
+
+    .progress {
+        height: 14px;
+        border-radius: 3px;
+        margin: 2.5em 0 0;
+
+        @include themed() {
+            background: darken(t('sidebar'), 3%);
+
+            .progress-bar {
+                height: 14px;
+                background: t('secondary');
+                font-size: 0.65em;
+            }
+        }
+    }
+
+    .vipProgress {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        margin-bottom: 2.5em;
+
+        div {
+            display: inline-flex;
+            position: relative;
+            svg {
+                width: 14px;
+                height: 14px;
+                position: absolute;
+                margin-left: -20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        div:last-child {
+            margin-left: auto;
+        }
+    }
+
+    .expandableBlock {
+        margin-top: 15px;
+
+        @include themed() {
+            .expandableBlockHeader {
+                background: darken(t('sidebar'), 3%);
+                border-radius: 0.25rem;
+                padding: 0.75rem 1.5rem;
+                display: flex;
+                align-content: center;
+                cursor: pointer;
+
+                svg {
+                    width: 14px;
+                    height: 14px;
+                    margin-right: 10px;
+                    margin-top: 4px;
+                }
+
+                i {
+                    position: absolute;
+                    right: 15px;
+                    margin-top: 5px;
+                }
+            }
+
+            .expandableBlockContent {
+                border: 1px solid darken(t('sidebar'), 3%);
+                border-top: none;
+                padding: 15px 23px;
+
+                ul {
+                    margin-bottom: 0;
+                    list-style: none;
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}

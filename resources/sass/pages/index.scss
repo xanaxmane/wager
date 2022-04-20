@@ -1,0 +1,509 @@
+@import "../variables";
+@import "~@glidejs/glide/dist/css/glide.core.min.css";
+@import "~@glidejs/glide/dist/css/glide.theme.min.css";
+
+.slider {
+    min-height: 350px;
+    height: 35vmin;
+    margin-bottom: 15px;
+    margin-top: -15px;
+    width: 100% !important;
+
+    .glide {
+        height: 100%;
+
+        .glide__track {
+            height: 100%;
+        }
+
+        .glide__slides {
+            height: 100%;
+        }
+
+        .glide__arrow--left, .glide__arrow--right {
+            padding: 0 !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            height: 35px;
+            width: 15px;
+            opacity: 0.5 !important;
+            transition: opacity 0.3s ease;
+            &:hover {
+                opacity: 1 !important;
+            }
+        }
+
+        .glide__arrow--right {
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='14' height='37' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.738 18.663l-12.448 18L0 34.8l11.176-16.136L0 2.527 1.29.663l12.448 18z' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+        .glide__arrow--left {
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.994 18l12.928 18 1.34-1.864L3.655 18 15.262 1.864 13.922 0 .994 18z' fill='%23fff'/%3E%3C/svg%3E");
+            left: 75px;
+        }
+
+
+        .glide__slide {
+            width: 100%;
+            height: 100% !important;
+            position: relative;
+            border-radius: 3px;
+
+            .image {
+                position: absolute;
+                background-size: cover;
+                background-repeat: no-repeat;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 1;
+                background-position-x: right;
+                background-position-y: center;
+            }
+
+            .slideContent {
+                width: 70%;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+                height: 100%;
+                flex-direction: column;
+                color: white;
+                position: relative;
+                z-index: 2;
+
+                .slideContentWrapper {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: auto;
+                    margin-bottom: auto;
+                }
+
+                .header, .description {
+                    text-shadow: 1px 1px 3px rgba(black, 0.2);
+                }
+
+                .header {
+                    font-weight: 600;
+                    font-size: 2em;
+                    margin-bottom: 25px;
+                }
+
+                .description {
+                    font-size: 1.5em;
+                    margin-bottom: 25px;
+                    width: 420px;
+                }
+
+                .button {
+                    width: 150px;
+                    text-align: center;
+                    padding: 10px 25px;
+                    background: rgba(white, 0.1);
+                    border: 1px solid rgba(white, 0.15);
+                    cursor: pointer;
+                    transition: background 0.3s ease, border-color 0.3s ease;
+
+                    &:hover {
+                        background: rgba(white, 0.2);
+                        border-color: rgba(white, 0.25);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.index_cat {
+    font-size: 1.15em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: 25px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    i {
+        margin-right: 5px;
+        width: 20px;
+        text-align: center;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .slider {
+        width: 100%;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .slider {
+        margin-left: -15px;
+        width: calc(100% + 30px);
+        height: 250px;
+
+        .glide__arrow--left {
+            left: 2em !important;
+        }
+
+        .image {
+            opacity: 0.7;
+        }
+
+        .glide__slide {
+            border-radius: 0;
+        }
+
+        .slideContentWrapper {
+            .header {
+                font-size: 1.6em !important;
+            }
+
+            .description {
+                font-size: 1.2em !important;
+            }
+        }
+    }
+}
+
+.game_poster {
+    display: inline-flex;
+    width: 285px;
+    height: 225px;
+    margin: 7px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    z-index: 1;
+    transition: all 0.3s ease;
+    top: 0;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: rgba(black, 0.2) 0 4px 6px -1px, rgba(black, 0.12) 0px 2px 4px -1px;
+
+    &:hover {
+        top: -6px;
+    }
+
+    &:after {
+        content: '';
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-size: cover;
+        pointer-events: none;
+        will-change: transform;
+        transition: all 300ms ease 0s;
+    }
+
+    .name {
+        z-index: 3;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        padding: 5px 10px;
+        @include blur(black, 0.5, 0.95, 20px);
+        border-radius: 3px;
+        color: white;
+    }
+
+    .unavailable {
+        z-index: 4;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(black, 0.7);
+        border-radius: 5px;
+        color: white;
+        .slanting {
+            transform: skewY(-5deg) translateY(-50%);
+            padding: 25px;
+            position: absolute;
+            top: 50%;
+            background: rgba(black, 0.85);
+            width: 100%;
+            .content {
+                font-size: 15px;
+                transform: skewY(5deg);
+                text-align: center;
+            }
+        }
+    }
+}
+
+.game-slots {
+    background: #23b26f;
+
+    &:after {
+        background-image: url('/img/game/slots.dark.svg');
+    }
+}
+
+.game-slide {
+    background: #8854f7;
+
+    &:after {
+        background-image: url('/img/game/slide.dark.svg');
+    }
+}
+
+.game-crash {
+    background-image: url('/img/game/crash.svg');
+}
+
+.game-hilo {
+    background-image: url('/img/game/hilo.svg');
+
+    &:after {
+        background-image: url('/img/game/hilo_overlay.svg');
+        top: -35px;
+        margin-left: 5px;
+    }
+}
+
+.game-roulette {
+    background-image: url('/img/game/roulette.svg');
+
+    &:after {
+        background-image: url('/img/game/roulette_overlay.svg');
+        background-size: auto;
+        top: -10%;
+        left: 84%;
+        width: 15%;
+    }
+
+    &:hover {
+        &:after {
+            transform: translate(0px, -3%);
+        }
+    }
+}
+
+.game-blackjack {
+    background-image: url('/img/game/blackjack.svg');
+
+    &:after {
+        background-image: url('/img/game/blackjack_overlay.svg');
+        opacity: 0.5;
+    }
+
+    &:hover {
+        &:after {
+            opacity: 0.7;
+            transform: scale(1.05);
+        }
+    }
+}
+
+.game-keno {
+    background-image: url('/img/game/keno.svg');
+
+    &:after {
+        background-image: url('/img/game/keno_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: translateY(-1%) scale(1.05);
+        }
+    }
+}
+
+.game-coinflip {
+    background-image: url('/img/game/coinflip.svg');
+
+    &:after {
+        background-image: url('/img/game/coinflip_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: scale(1.15) rotate(6deg);
+        }
+    }
+}
+
+.game-mines {
+    background-image: url('/img/game/mines.svg');
+
+    &:after {
+        background-image: url('/img/game/mines_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: translate(0px, -6%);
+        }
+    }
+}
+
+.game-tower {
+    background-image: url('/img/game/tower.svg');
+
+    &:after {
+        background-image: url('/img/game/tower_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: translateY(-1.2%) scale(1.025);
+        }
+    }
+}
+
+.game-stairs {
+    background-image: url('/img/game/stairs.svg');
+
+    &:after {
+        background-image: url('/img/game/stairs_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: translate(-4%, 4%);
+        }
+    }
+}
+
+.game-limbo {
+    background-image: url('/img/game/limbo.svg');
+
+    &:after {
+        background-image: url('/img/game/limbo_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: scale(1.25);
+        }
+    }
+}
+
+.game-videopoker {
+    background-image: url('/img/game/videopoker.svg');
+
+    &:after {
+        background-image: url('/img/game/videopoker_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: translateY(-2%) rotate(-2deg) scale(1.05);
+        }
+    }
+}
+
+.game-plinko {
+    background-image: url('/img/game/plinko.svg');
+    background-position: center;
+
+    &:after {
+        background-image: url('/img/game/plinko_overlay.svg');
+        background-position: bottom;
+    }
+
+    &:hover {
+        &:after {
+            transform: translateY(-5%) scale(1.07);
+        }
+    }
+}
+
+.game-dice {
+    background-image: url('/img/game/dice.svg');
+    background-position: center;
+
+    &:after {
+        background-image: url('/img/game/dice_overlay.svg');
+        background-position: center;
+    }
+
+    &:hover {
+        &:after {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.game-wheel {
+    background-image: url('/img/game/wheel.svg');
+    background-position-y: center;
+
+    &:after {
+        background-image: url('/img/game/wheel_overlay.svg');
+        background-size: auto;
+        top: -4%;
+        left: 47.5%;
+        width: 4.5%;
+        transform-origin: 50% 5%;
+    }
+
+    &:hover {
+        &:after {
+            transform: rotate(-10deg);
+        }
+    }
+}
+
+.game-diamonds {
+    background-image: url('/img/game/diamonds.svg');
+
+    &:after {
+        background-image: url('/img/game/diamonds_overlay.svg');
+    }
+
+    &:hover {
+        &:after {
+            transform: translate(0%, -2%) scale(1.05);
+        }
+    }
+}
+
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@include media-breakpoint-down(sm) {
+    .game_poster {
+        width: calc(50% - 15px);
+    }
+
+    .image {
+        width: 100%;
+        background-position: center;
+    }
+
+    .slideContent .description {
+        width: calc(100% - 15px) !important;
+        margin-bottom: 15px !important;
+    }
+
+    .slideContent .header {
+        margin-bottom: 15px !important;
+    }
+
+    .glide__bullets, .glide__arrows {
+        display: none;
+    }
+}
+
+@media(max-width: 450px) {
+    .game_poster {
+        height: 35vw;
+        width: calc(50vw - 30px);
+        background-position-y: center;
+    }
+}
